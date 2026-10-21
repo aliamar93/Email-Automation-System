@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="SecureHybrid.Api/SecureHybrid.Api.csproj" />
+  <Project Path="SecureHybrid.Client/securehybrid.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+</Solution>
