@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+
+
+
+@theme {
+    --color-navy-800: #102a4c;
+    --color-navy-900: #0b1d38;
+    --font-sans: 'Inter','Segoe UI', system-ui,sans-serif;
+}
+
+body{
+    background-color:#f4f8fc;
+    color:var(--color-slate-700);
+}
