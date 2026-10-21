@@ -86,19 +86,24 @@ Reports can be saved as a draft, activated, or test-run before activation.
 | Icons | lucide-react |
 | State management | React Context with a custom `useAppStore` hook |
 | Code quality | ESLint |
+| Backend (planned) | ASP.NET Core Web API, scaffolded in `SecureHybrid.Api` |
 
 ## Getting started
 
 **Requirements:** [Node.js](https://nodejs.org/) 20 or newer (LTS recommended).
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/report-automation.git
-cd report-automation
+git clone https://github.com/aliamar93/Email-Automation-System.git
+cd Email-Automation-System/securehybrid.client
 npm install
 npm run dev
 ```
 
-Then open http://localhost:5173 in your browser.
+Then open http://localhost:64888 in your browser.
+
+Alternatively, open `SecureHybridDemo.slnx` in Visual Studio and press **F5**.
+
+All commands in the table below are run inside the `securehybrid.client` folder.
 
 | Command | What it does |
 |---|---|
@@ -112,24 +117,29 @@ Then open http://localhost:5173 in your browser.
 ## Project structure
 
 ```
-src/
-├── App.tsx              # Route definitions
-├── components/
-│   ├── layout/          # AppLayout, TopBar, Sidebar, AppBar
-│   └── UI/              # Reusable components: Dropdown, Confirm, RunModal, Toast, …
-├── context/             # AppStoreContext and AppStoreProvider (global state)
-├── hooks/               # useAppStore
-├── features/            # One folder per page
-│   ├── dashboard/
-│   ├── reports/         # List, details, create/edit form
-│   ├── execution/
-│   ├── database/
-│   ├── templates/       # Email and report templates
-│   ├── settings/
-│   ├── audit/
-│   └── not-found/
-├── mocks/               # Seed data: reports, executions, connections, templates, …
-└── types/               # Shared TypeScript types
+Email-Automation-System/
+├── docs/                        # Live demo (index.html) and README screenshots
+├── securehybrid.client/         # React frontend: the application itself
+│   └── src/
+│       ├── App.tsx              # Route definitions
+│       ├── components/
+│       │   ├── layout/          # AppLayout, TopBar, Sidebar, AppBar
+│       │   └── UI/              # Reusable components: Dropdown, Confirm, RunModal, Toast, …
+│       ├── context/             # AppStoreContext and AppStoreProvider (global state)
+│       ├── hooks/               # useAppStore
+│       ├── features/            # One folder per page
+│       │   ├── dashboard/
+│       │   ├── reports/         # List, details, create/edit form
+│       │   ├── execution/
+│       │   ├── database/
+│       │   ├── templates/       # Email and report templates
+│       │   ├── settings/
+│       │   ├── audit/
+│       │   └── not-found/
+│       ├── mocks/               # Seed data: reports, executions, connections, templates, …
+│       └── types/               # Shared TypeScript types
+├── SecureHybrid.Api/            # ASP.NET Core project prepared for the future backend
+└── SecureHybridDemo.slnx        # Visual Studio solution
 ```
 
 ## How it works
@@ -182,4 +192,4 @@ flowchart LR
 ## Author
 
 **YOUR NAME**
-[LinkedIn](https://www.linkedin.com/in/YOUR-PROFILE) · [Email](mailto:YOUR-EMAIL) · [GitHub](https://github.com/YOUR-USERNAME)
+[LinkedIn](https://www.linkedin.com/in/YOUR-PROFILE) · [Email](mailto:YOUR-EMAIL) · [GitHub](https://github.com/aliamar93)
