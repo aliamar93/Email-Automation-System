@@ -8,7 +8,7 @@ A web application for IT and operations teams to schedule SQL reports, generate 
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?logo=reactrouter&logoColor=white)
 
-**[▶ Live demo](https://aliamar93.github.io/report-automation/)**
+**[▶ Live demo](https://aliamar93.github.io/Email-Automation-System/)**
 
 ![Dashboard](docs/screenshots/dashboard.png)
 
