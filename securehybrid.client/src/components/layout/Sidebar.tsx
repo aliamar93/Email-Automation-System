@@ -14,7 +14,8 @@ export function Sidebar({ open, onClose }: SidebarProps) {
     // Menu ke saath chhote numbers: kitne reports, kitne failed runs
     const counts: Record<string, number | null> = {
         reports: store.reports.length,
-        executions: store.executions.filter((e) => e.status === 'Failed').length || null,
+        executions: store.executions.
+            filter((e) => e.status === 'Failed').length || null,
     }
 
     return (
