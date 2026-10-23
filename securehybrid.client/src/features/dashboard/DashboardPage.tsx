@@ -125,84 +125,33 @@ export function DashboardPage() {
                     <div key={k.l} className={C.card + ' flex items-center gap-3 p-4'}>
                         <span className={'grid h-11 w-11 shrink-0 place-items-center rounded-xl ' + k.t}>
                             <k.i size={21} />
-                    </span>
-                    <div className="min-w-0">
+                        </span>
+                        <div className="min-w-0">
                             <p className={'text-[24px] font-bold leading-none ' + k.c}>{k.v}</p>
                             <p className="mt-1 truncate text-[12.5px] text-slate-500">{k.l}</p>
+                        </div>
                     </div>
-                </div>
                 ))}
-                    </div>
-                </div>
-
-                <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm flex items-center gap-3 p-4">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-slate-100 text-slate-500">
-                        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <circle cx="12" cy="12" r="9"></circle>
-                            <path d="M10 9v6M14 9v6"></path></svg>
-                    </span>
-                    <div className="min-w-0">
-                        <p className="text-[24px] font-bold text-red-600">2</p>
-                        <p className="text-[13px] text-slate-500">Disabled Reports</p>
-                    </div>
-
-                </div>
-
-                <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm flex items-center gap-3 p-4">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-red-50 text-red-500">
-                        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <circle cx="12" cy="12" r="9"></circle>
-                            <path d="M12 7v6M12 16.5h.01"></path></svg>
-                    </span>
-                    <div className="min-w-0">
-                        <p className="text-[24px] font-bold text-slate-900">3</p>
-                        <p className="text-[13px] text-slate-500">Failed (24 h)</p>
-                    </div>
-                </div>
-
-                <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm flex items-center gap-3 p-4">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-sky-50 text-sky-600">
-                        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 3L3 10.5l7 3 3 7L21 3z"></path>
-                            <path d="M10 13.5L21 3"></path></svg>
-                    </span>
-                    <div className="min-w-0">
-                        <p className="text-[24px] font-bold text-emerald-600">12</p>
-                        <p className="text-[13px] text-slate-500">Reports Sent Today</p>
-                    </div>
-                </div>
-
-                <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm flex items-center gap-3 p-4">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-violet-50 text-violet-600">
-                        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                            <path d="M3 17l6-6 4 4 7-7"></path>
-                            <path d="M14 8h6v6"></path></svg></span>
-                    <div className="min-w-0">
-                        <p className="text-[24px] font-bold text-red-600">98.5%</p>
-                        <p className="text-[13px] text-slate-500">Success Rate (7 d)</p>
-                    </div>
-                </div>
-
             </div>
-
             <div className="grid gap-4 xl:grid-cols-3 xl:gap-5">
                 <Card
                     className="xl:col-span-2"
                     title="Executions in the last 7 days"
                     sub="Successful versus failed runs per day"
                     right={
-                            <div className="flex items-center gap-4 text-[12px] text-slate-500">
-                                <span className="flex items-center gap-1.5">
+                        <div className="flex items-center gap-4 text-[12px] text-slate-500">
+                            <span className="flex items-center gap-1.5">
                                 <span className="h-2.5 w-2.5 rounded-xs bg-blue-500" />
-                                    Success
-                                </span>
-                                <span className="flex items-center gap-1.5">
+                                Success
+                            </span>
+                            <span className="flex items-center gap-1.5">
                                 <span className="h-2.5 w-2.5 rounded-xs bg-red-400" />
-                                    Failed
-                                </span>
-                            </div>
+                                Failed
+                            </span>
+                        </div>
                     }
                 >
-                        <div className="flex h-[220px] items-end gap-3 sm:gap-5">
+                    <div className="flex h-[220px] items-end gap-3 sm:gap-5">
                         {WEEK_RUNS.map((w) => (
                             <div key={w.d} className="flex flex-1 flex-col items-center gap-2">
                                 <span className="text-[11.5px] font-semibold text-slate-600">{w.ok + w.fail}</span>
@@ -223,7 +172,7 @@ export function DashboardPage() {
                                 <span className="text-[12px] text-slate-500">{w.d}</span>
                             </div>
                         ))}
-                                </div>
+                    </div>
                 </Card>
                 <Card
                     title="System health"
@@ -234,7 +183,7 @@ export function DashboardPage() {
                         </Btn>
                     }
                 >
-                        <ul className="space-y-3">
+                    <ul className="space-y-3">
                         {health.map((h) => (
                             <li
                                 key={h.label}
@@ -247,17 +196,17 @@ export function DashboardPage() {
                                 <span className={'ml-auto text-[13.5px] font-semibold ' + h.tone}>{h.value}</span>
                             </li>
                         ))}
-                        </ul>
-                        <div className="mt-4 grid grid-cols-2 gap-2.5">
+                    </ul>
+                    <div className="mt-4 grid grid-cols-2 gap-2.5">
                         <Btn size="sm" icon={Play} onClick={() => toast('3 due jobs queued')}>
                             Run due jobs
                         </Btn>
                         <Btn size="sm" icon={Database} onClick={() => navigate('/connections')}>
                             Connections
                         </Btn>
-                        </div>
-                </Card>
                     </div>
+                </Card>
+            </div>
             <div className="grid gap-4 xl:grid-cols-3 xl:gap-5">
                 <Card
                     title="Next scheduled runs"
@@ -267,7 +216,7 @@ export function DashboardPage() {
                         </Btn>
                     }
                 >
-                        <ul className="divide-y divide-slate-100">
+                    <ul className="divide-y divide-slate-100">
                         {upcoming.map((r) => (
                             <li key={r.id} className="flex items-center gap-3 py-2.5">
                                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-blue-50 text-blue-600">
@@ -280,7 +229,7 @@ export function DashboardPage() {
                                         className="block truncate text-[13.5px] font-semibold text-slate-800 hover:text-blue-600"
                                     >
                                         {r.title}
-                                </button>
+                                    </button>
                                     <p className="text-[12px] text-slate-500">
                                         {r.next[0]} · {r.next[1]}
                                     </p>
@@ -290,7 +239,7 @@ export function DashboardPage() {
                                 </IconBtn>
                             </li>
                         ))}
-                        </ul>
+                    </ul>
                 </Card>
                 <Card
                     title="Recent failures"
@@ -311,21 +260,21 @@ export function DashboardPage() {
                         <ul className="divide-y divide-slate-100">
                             {failures.map((e) => (
                                 <li key={e.id} className="flex items-center gap-3 py-2.5">
-                                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-red-50 text-red-500">
+                                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-red-50 text-red-500">
                                         <CircleAlert size={16} />
-                                </span>
-                                <div className="min-w-0 flex-1">
+                                    </span>
+                                    <div className="min-w-0 flex-1">
                                         <p className="truncate text-[13.5px] font-semibold text-slate-800">
                                             {e.report}
                                         </p>
                                         <p className="font-mono text-[11.5px] text-slate-500">
                                             {e.id} · {e.started}
                                         </p>
-                                </div>
+                                    </div>
                                     <Btn size="sm" icon={RefreshCw} onClick={() => toast('Retry queued for ' + e.id)}>
                                         Retry
                                     </Btn>
-                            </li>
+                                </li>
                             ))}
                         </ul>
                     )}
@@ -338,7 +287,7 @@ export function DashboardPage() {
                         </Btn>
                     }
                 >
-                        <ul className="space-y-3">
+                    <ul className="space-y-3">
                         {audit.slice(0, 6).map((a) => (
                             <li key={a.id} className="flex gap-3">
                                 <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-blue-500" />
@@ -351,7 +300,7 @@ export function DashboardPage() {
                                 </div>
                             </li>
                         ))}
-                        </ul>
+                    </ul>
                 </Card>
             </div>
         </>
