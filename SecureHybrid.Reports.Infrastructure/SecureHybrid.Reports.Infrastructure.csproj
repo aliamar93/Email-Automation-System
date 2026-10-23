@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SecureHybrid.Reports.Application\SecureHybrid.Reports.Application.csproj" />
+    <ProjectReference Include="..\SecureHybrid.Reports.Domain\SecureHybrid.Reports.Domain.csproj" />
+    <ProjectReference Include="..\SecureHybrid.SharedKernel\SecureHybrid.SharedKernel.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -2,7 +2,7 @@ import { LucideProvider } from 'lucide-react'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import { AppLayout } from './components/layout/AppLayout'
 import { AppStoreProvider } from './context/AppStoreProvider'
-import { ComingSoon } from './components/UI/ComingSoon'
+//import { ComingSoon } from './components/UI/ComingSoon'
 import { AuditPage } from './features/audit/AuditPage'
 import { DashboardPage } from './features/dashboard/DashboardPage'
 import { DatabaseConnection } from './features/database/DatabaseConnection'
@@ -47,6 +47,10 @@ function App() {
 
 export default App
 
+
+
+
+    // < Route path = "audit" element = {< ComingSoon title = "Test" />} />
 // import { useState } from 'react'
 // import { NAV_ITEMS } from './components/layout/navItems'
 // import { Sidebar } from './components/layout/Sidebar'

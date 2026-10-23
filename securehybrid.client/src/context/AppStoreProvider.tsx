@@ -88,7 +88,7 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
                         by: 'John Doe'
 
                     },
-                ].concat(s.exceutions),
+                ].concat(s.executions),
                 reports: s.reports.map((x) =>
                     x.id === r.id ? { ...x, status: 'Success', last: ['Apr 27,2025', '02:15 PM'] } : x,
                 ),
@@ -156,7 +156,7 @@ export function AppStoreProvider({ children }: { children: ReactNode }) {
                     title: t.name,
                     meta: 'Email Template',
                     icon: Mail,
-                    opne: () => navigate('/email-templates'),
+                    open: () => navigate('/email-templates'),
                 }),
             )
         store.executions

@@ -1,5 +1,26 @@
 <Solution>
-  <Project Path="SecureHybrid.Api/SecureHybrid.Api.csproj" />
+  <Folder Name="/src/">
+    <Project Path="SecureHybrid.Api/SecureHybrid.Api.csproj" />
+    <Project Path="SecureHybrid.Contracts/SecureHybrid.Contracts.csproj" Id="d4889929-6f66-45bf-8d20-02355fc9aa92" />
+    <Project Path="SecureHybrid.Platform.Security/SecureHybrid.Platform.Security.csproj" Id="5332dabb-0106-4385-b378-a3c4e5a711e0" />
+    <Project Path="SecureHybrid.SharedKernel/SecureHybrid.SharedKernel.csproj" Id="2bce3c70-081a-4037-98e9-2b7c8121aba3" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/Audit/" />
+  <Folder Name="/src/Modules/Connections/" />
+  <Folder Name="/src/Modules/Delivery/" />
+  <Folder Name="/src/Modules/Execution/" />
+  <Folder Name="/src/Modules/Reports/">
+    <Project Path="SecureHybrid.Reports.Application/SecureHybrid.Reports.Application.csproj" Id="938a09af-0927-4685-934a-82d7e7d16b4a" />
+    <Project Path="SecureHybrid.Reports.Domain/SecureHybrid.Reports.Domain.csproj" Id="5bc95a9b-2612-4691-8246-5ac3f424a442" />
+    <Project Path="SecureHybrid.Reports.Infrastructure/SecureHybrid.Reports.Infrastructure.csproj" Id="c4a71692-5a44-402e-8391-c8ea9afb0a20" />
+  </Folder>
+  <Folder Name="/src/Modules/Scheduling/" />
+  <Folder Name="/src/Modules/Users/">
+    <Project Path="SecureHybrid.Users.Application/SecureHybrid.Users.Application.csproj" Id="bb14b4d4-b554-4a5d-bc00-807782dc13c7" />
+    <Project Path="SecureHybrid.Users.Domain/SecureHybrid.Users.Domain.csproj" Id="8ea45380-75a0-43f2-b983-9e65e7526c6c" />
+    <Project Path="SecureHybrid.Users.Infrastructure/SecureHybrid.Users.Infrastructure.csproj" Id="ee80e035-8b16-4a72-b154-3e37e3ead656" />
+  </Folder>
   <Project Path="SecureHybrid.Client/securehybrid.client.esproj">
     <Build />
     <Deploy />

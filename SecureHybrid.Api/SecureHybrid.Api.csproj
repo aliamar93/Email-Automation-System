@@ -12,4 +12,13 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SecureHybrid.Contracts\SecureHybrid.Contracts.csproj" />
+    <ProjectReference Include="..\SecureHybrid.Platform.Security\SecureHybrid.Platform.Security.csproj" />
+    <ProjectReference Include="..\SecureHybrid.Reports.Application\SecureHybrid.Reports.Application.csproj" />
+    <ProjectReference Include="..\SecureHybrid.Reports.Infrastructure\SecureHybrid.Reports.Infrastructure.csproj" />
+    <ProjectReference Include="..\SecureHybrid.Users.Application\SecureHybrid.Users.Application.csproj" />
+    <ProjectReference Include="..\SecureHybrid.Users.Infrastructure\SecureHybrid.Users.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -9,7 +9,7 @@ interface ComingSoonProps {
 export function ComingSoon({ title }: ComingSoonProps) {
     return (
         <>
-            <PageHeader title={title} subtitle="This page will be built in a later step." />
+            <PageHeader title={title} sub="This page will be built in a later step." />
             <div className="rounded-xl border border-dashed border-slate-300 bg-white p-10 text-center text-[14px] text-slate-500">
                 Coming soon
             </div>

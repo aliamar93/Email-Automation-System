@@ -1,5 +1,5 @@
 import type { LucideIcon } from 'lucide-react'
-import type { ReactNode } from 'react'
+// import type { ReactNode } from 'react'
 
 
 // Ek scheduled report ki poori shape (seed data se li gayi)
@@ -73,7 +73,7 @@ export interface Connection {
     readOnly: boolean
     status: string
     lastTested: string
-    reports: string
+    reports: number
 }
 
 
@@ -186,7 +186,7 @@ export interface SearchResult {
     title: string
     meta: string
     icon: LucideIcon
-    opne: () => void
+    open: () => void
 }
 
 // Run modal kis report ke liye khula hai
