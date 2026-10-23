@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Documentation.txt" />
+  </Folder>
   <Folder Name="/src/">
     <Project Path="SecureHybrid.Api/SecureHybrid.Api.csproj" />
     <Project Path="SecureHybrid.Contracts/SecureHybrid.Contracts.csproj" Id="d4889929-6f66-45bf-8d20-02355fc9aa92" />

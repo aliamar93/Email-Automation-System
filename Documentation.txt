@@ -1,0 +1,119 @@
+Aap ka artifact wahi app hai jo zip mein hai, aur us mein abhi sab kuch mock data par chal raha hai. Maine har page aur har button dekh kar list banai hai ke backend mein kaun si APIs chahiye. Kul taqreeban 60 endpoints hain. Auth wali APIs aap ke guide doc mein pehle se hain, is liye unhein yahan dobara nahi likha.
+
+Sab APIs ke liye ek hi qaida rakhein:
+- Base path `/api` ho.
+- List wali APIs `?page=&pageSize=` lein aur `{ items, total }` wapas karein.
+- Error hamesha `ProblemDetails` mein aaye.
+
+Neeche tables mein "Kaun" ka matlab: Viewer = `ReportReaders` policy, Creator = `ReportEditors`, Admin = `AdminOnly`.
+
+### 1. Accounts (Users module)
+
+Login, refresh, logout, me, change-password, account create, roles aur lock/unlock doc mein hain. Do aur chahiye:
+
+| Endpoint | Kaun | Kaam |
+|---|---|---|
+| `GET /api/admin/accounts` | Admin | Sab users ki list: login bana hai ya nahi, aur roles (Settings → Roles → Members) |
+| `GET /api/roles` | Admin | Roles tab: har role, kitne log, kya permissions |
+
+### 2. Reports (Reports module)
+
+| Endpoint | Kaun | Kaam |
+|---|---|---|
+| `GET /api/reports` | Viewer | List with filters: search, status, format, schedule type, owner, date range, sort. Active, disabled aur failed counts bhi |
+| `GET /api/reports/{id}` | Viewer | Poori configuration (detail page aur edit form ke liye) |
+| `POST /api/reports` | Creator | Nayi report. `activate: false` ho to draft. `templateId` aaye to us template ka `uses` barhao |
+| `PUT /api/reports/{id}` | Creator (sirf apni) / Admin | Edit |
+| `DELETE /api/reports/{id}` | Creator (sirf apni) / Admin | Soft delete, taake execution history na tootay |
+| `PATCH /api/reports/{id}/active` | Creator | Enable/disable toggle |
+| `POST /api/reports/{id}/duplicate` | Creator | Copy banao, draft ke taur par |
+| `POST /api/reports/bulk` | Creator | `{ ids, action }` jahan action = run, disable ya delete |
+| `POST /api/reports/{id}/run` | Creator | Run now: execution queue karo aur `202` + `executionId` wapas do |
+| `POST /api/reports/test-run` | Creator | Wizard ka test run: unsaved config aaye, kuch save na ho |
+| `POST /api/reports/{id}/test-email` | Creator | Email preview sirf current user ko |
+
+### 3. SQL editor
+
+| Endpoint | Kaun | Kaam |
+|---|---|---|
+| `POST /api/sql/validate` | Creator | Sirf `SELECT` allow ho, write statements block hon, `@params` detect hon |
+| `POST /api/sql/preview` | Creator | `{ connectionId, sql, params }` → pehli 5 rows, row count, columns, time |
+
+Ye check server par zaroori hai. Abhi `lib/sql.ts` sirf browser mein check karta hai, jise koi bhi bypass kar sakta hai. Preview hamesha read-only DB user, timeout aur row limit ke saath chalayein.
+
+### 4. Executions aur files (Execution module)
+
+| Endpoint | Kaun | Kaam |
+|---|---|---|
+| `GET /api/executions` | Viewer | History with filters: report, status, trigger, date range. Report detail aur dashboard bhi isi ko use karein |
+| `GET /api/executions/{id}` | Viewer | Detail aur steps. Run modal isay har 1–2 second poll kare |
+| `GET /api/executions/{id}/logs` | Viewer | Log viewer. `?download=true` ho to file mile |
+| `POST /api/executions/{id}/retry` | Creator | Failed run dobara chalao |
+| `POST /api/executions/{id}/resend` | Creator | Wahi files dobara email karo |
+| `GET /api/executions/export` | Viewer | Same filters ke saath CSV |
+| `GET /api/executions/{id}/files` | Viewer | Us run ki generated files |
+| `GET /api/files/{fileId}` | Viewer | File download (stream) |
+| `DELETE /api/files/{fileId}` | Admin | Attachment delete |
+
+### 5. Database connections (Connections module)
+
+| Endpoint | Kaun | Kaam |
+|---|---|---|
+| `GET /api/connections` | Creator | List (wizard ke dropdown ke liye bhi). Password kabhi wapas na bhejein |
+| `GET /api/connections/{id}` | Admin | Edit form ke liye |
+| `POST /api/connections` | Admin | Naya connection, password encrypted save ho |
+| `PUT /api/connections/{id}` | Admin | Edit. Password khaali aaye to purana rakhein |
+| `DELETE /api/connections/{id}` | Admin | Agar koi report isay use kar rahi ho to `409` |
+| `POST /api/connections/test` | Admin | Form ki values test karo, save se pehle |
+| `POST /api/connections/{id}/test` | Admin | Saved connection test karo, `status` aur `lastTested` update karo |
+
+### 6. Templates (Delivery module)
+
+| Endpoint | Kaun | Kaam |
+|---|---|---|
+| `GET /api/email-templates` | Creator | List |
+| `GET`, `PUT`, `DELETE /api/email-templates/{id}` aur `POST /api/email-templates` | Creator | CRUD |
+| `POST /api/email-templates/{id}/duplicate` | Creator | Copy |
+| `POST /api/email-templates/{id}/test` | Creator | `{{Date}}`, `{{RowCount}}` jaise variables sample values se bhar kar current user ko bhejo |
+| `GET /api/report-templates` | Creator | Template gallery |
+| `GET /api/report-templates/{id}` | Creator | `/reports/new?template=` wala form prefill |
+
+### 7. Settings, dashboard, notifications, search, audit
+
+| Endpoint | Kaun | Kaam |
+|---|---|---|
+| `GET /api/settings` | Admin | General, SMTP, security, retention (SMTP password nahi) |
+| `PUT /api/settings` | Admin | Save |
+| `POST /api/settings/smtp/test` | Admin | Test email current user ko |
+| `GET /api/dashboard` | Viewer | Ek hi call mein KPI cards, 7 din ka chart, next runs, recent failures, activity |
+| `GET /api/system/health` | Viewer | Scheduler, SMTP, DB connections aur queue depth ka status |
+| `POST /api/scheduler/run-due` | Admin | "Run due jobs" button |
+| `GET /api/notifications` | Signed in | List aur unread count |
+| `POST /api/notifications/{id}/read` | Signed in | Ek notification read karo |
+| `POST /api/notifications/read-all` | Signed in | Sab read karo |
+| `GET /api/search?q=` | Signed in | Top bar search: reports, connections, templates, executions |
+| `GET /api/audit` | Admin | Search aur filters: action, entity, user, date range |
+| `GET /api/audit/export` | Admin | CSV |
+
+Audit ke liye koi POST API nahi honi chahiye. Har create, update, delete aur run ka audit server khud likhe. Abhi `AppStoreProvider.audit()` browser se likhta hai, jo backend mein jaana chahiye.
+
+### Jo API nahi, background kaam hai
+
+App ka asal kaam yahan hota hai; upar wali APIs sirf isay control karti hain.
+
+- **Scheduler (Scheduling module):** har minute due reports dhoondhe (schedule aur timezone ke mutabiq) aur execution queue kare. Hangfire, Quartz.NET ya ek simple `BackgroundService` use kar sakte hain.
+- **Runner (Execution module):** connect → query → Excel/PDF/CSV/JSON banao → email bhejo → execution record aur audit likho. Retry policy, empty-result rule aur admin notification bhi yahin aayein.
+- **Retention job:** purani files, executions aur audit entries Settings ke din ke hisaab se delete kare.
+
+### Kis tarteeb mein banayein
+
+1. Auth (guide doc mein hai).
+2. Connections, kyunke har report ko connection chahiye.
+3. SQL validate aur preview.
+4. Reports CRUD.
+5. Email templates aur SMTP settings.
+6. Run, executions aur runner. Yahan se app asal mein kaam karne lagti hai.
+7. Scheduler.
+8. Dashboard, notifications, search, audit aur baqi settings.
+
+Chahein to ye poori list aap ke guide doc mein ek naye tab mein daal doon, ya kisi ek module (maslan Reports) ka controller, DTOs aur service code likh doon.

@@ -1,24 +1,33 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.13" />
-    <PackageReference Include="Node.js" Version="5.3.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.2.3" />
-  </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SecureHybrid.Contracts\SecureHybrid.Contracts.csproj" />
-    <ProjectReference Include="..\SecureHybrid.Platform.Security\SecureHybrid.Platform.Security.csproj" />
-    <ProjectReference Include="..\SecureHybrid.Reports.Application\SecureHybrid.Reports.Application.csproj" />
-    <ProjectReference Include="..\SecureHybrid.Reports.Infrastructure\SecureHybrid.Reports.Infrastructure.csproj" />
-    <ProjectReference Include="..\SecureHybrid.Users.Application\SecureHybrid.Users.Application.csproj" />
-    <ProjectReference Include="..\SecureHybrid.Users.Infrastructure\SecureHybrid.Users.Infrastructure.csproj" />
-  </ItemGroup>
+		<!--UserSecret-->
+		<UserSecretsId>7b104023-ff83-4f13-b8a7-2080369f159e</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.13" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.13">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Node.js" Version="5.3.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.2.3" />
+		<PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\SecureHybrid.Contracts\SecureHybrid.Contracts.csproj" />
+		<ProjectReference Include="..\SecureHybrid.Platform.Security\SecureHybrid.Platform.Security.csproj" />
+		<ProjectReference Include="..\SecureHybrid.Reports.Application\SecureHybrid.Reports.Application.csproj" />
+		<ProjectReference Include="..\SecureHybrid.Reports.Infrastructure\SecureHybrid.Reports.Infrastructure.csproj" />
+		<ProjectReference Include="..\SecureHybrid.Users.Application\SecureHybrid.Users.Application.csproj" />
+		<ProjectReference Include="..\SecureHybrid.Users.Infrastructure\SecureHybrid.Users.Infrastructure.csproj" />
+	</ItemGroup>
 
 </Project>
